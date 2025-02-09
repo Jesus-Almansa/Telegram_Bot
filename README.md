@@ -180,11 +180,13 @@ Here's a simplified structure:
 
 ```
 .
-├── docker-compose.yml
-├── Dockerfile
-├── requirements.txt
-├── .env                # Contains your API_KEY, BOT_USERNAME, and passwords
-└── main.py             # Main bot script
+├── Docker/
+|        ├── docker-compose.yml
+|        ├── Dockerfile
+|        ├── requirements.txt
+├── Bot/
+|       ├── .env                # Contains your API_KEY, BOT_USERNAME, and passwords
+|       ├── main.py             # Main bot script
 ```
 
 - **`requirements.txt`** lists Python dependencies (e.g., `python-telegram-bot`).
@@ -205,7 +207,6 @@ Here's a simplified structure:
   start - Start the bot
   help - Get help
   custom - A custom command
-  anonymous - Another custom command
   ```
   This helps Telegram show command suggestions to users.
 
@@ -216,7 +217,6 @@ Here's a simplified structure:
   - **`/start`**  
   - **`/help`**  
   - **`/custom`**  
-  - **`/anonymous`**
 - Send random text messages or greetings to see how the bot responds. If in a group, don’t forget to mention the bot’s username if you want it to respond (`@YourBotUsername Hello!`).
 
 ### **4. Modify Responses**
