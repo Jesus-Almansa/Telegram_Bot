@@ -224,6 +224,70 @@ Here's a simplified structure:
 
 ---
 
+## **Current Capabilities**
+This bot **works based on predefined responses**. It can:
+
+✅ Greet users and say goodbye  
+✅ Answer simple questions (`how are you?`)  
+✅ Recognize morning/night greetings  
+✅ Respond to gratitude (`thank you!`)  
+✅ React to specific phrases  
+
+Here’s how the response logic is structured:
+```python
+def handle_response(text: str):
+    processed = text.lower()
+
+    if "hello" in processed:
+        return "¡Hola! ¿Cómo estás?"
+    if "bye" in processed:
+        return "¡Adiós! Espero verte pronto."
+    
+    return "No entiendo lo que quieres decir. 🤔"
+```
+🚀 **This is just the foundation. The next step is to upgrade it with AI!**
+
+---
+
+## **Future Plans: LLM Integration**
+While predefined responses are great, they **limit the bot’s ability to truly engage in conversation**.  
+The **next step** is integrating an **LLM** (Large Language Model) like:
+
+- **OpenAI’s GPT (ChatGPT)**
+- **Google’s Gemini**
+- **Facebook’s LLaMA**
+- **Local LLMs (e.g., Mistral, GPT4All)**
+
+### **How will LLM Integration Work?**
+Instead of matching predefined responses, the bot will:
+1. **Receive a user’s message**
+2. **Send it to an LLM API** (like OpenAI’s API or a locally hosted model)
+3. **Get an intelligent response** and send it back to the user
+
+#### **Example Integration with OpenAI API**
+```python
+import openai
+
+def ask_gpt(prompt):
+    response = openai.ChatCompletion.create(
+        model="gpt-4",
+        messages=[{"role": "user", "content": prompt}]
+    )
+    return response['choices'][0]['message']['content']
+```
+
+#### **Benefits of Using LLM**
+✅ **More natural conversations**  
+✅ **Ability to answer a wider range of questions**  
+✅ **Support for multiple languages**  
+✅ **Custom personalities and behavior**  
+
+With LLM integration, this bot **will evolve from a simple rule-based chatbot into a true AI-powered assistant!** 🚀
+
+---
+
+
+
 ## Troubleshooting
 
 1. **Container Exits Immediately**  
