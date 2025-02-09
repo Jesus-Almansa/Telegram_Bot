@@ -1,0 +1,19 @@
+services:
+  app:
+    build:
+      context: .
+      args:
+        JESUS_PASSWORD: ${JESUS_PASSWORD}
+        IKER_PASSWORD: ${IKER_PASSWORD}
+    container_name: TelgramBot
+    hostname: yharnam
+    env_file:
+      - .env
+    volumes:
+      - ../Bot/:/usr/src/app/workspace
+    stdin_open: true
+    tty: true
+    user: "jesus"
+#    command: bash -c "sudo chown -R jesus:jesus /usr/src/app/workspace && bash"
+    entrypoint: ["bash", "-c", "sudo chown -R jesus:jesus /usr/src/app/workspace && bash"]
+
