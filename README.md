@@ -89,7 +89,7 @@ services:
       args:
         JESUS_PASSWORD: ${JESUS_PASSWORD}
         IKER_PASSWORD: ${IKER_PASSWORD}
-    container_name: TelgramBot
+    container_name: TelegramBot
     restart: always
     hostname: yharnam
     env_file:
