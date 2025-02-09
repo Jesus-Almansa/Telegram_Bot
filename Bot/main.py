@@ -19,26 +19,84 @@ async def help_command(update: Update, context: ContextTypes):
 async def custom_command(update: Update, context: ContextTypes):
     await update.message.reply_text("Este es un comando personalizado!")
     
-async def anonymous_command(update: Update, context: ContextTypes):
-    await update.message.reply_text("Este es un comando anónimo!")
-    
 # Responses
+
+import random
 
 def handle_response(text: str):
     processed: str = text.lower()
-    if 'hello' in processed:
-        return "Hola! ¿En qué puedo ayudarte?"
-    
-    if 'bye' in processed:
-        return "Adiós! Espero verte pronto."
-    
-    if 'how are you' in processed:
-        return "Estoy bien, gracias por preguntar."
-    
-    if 'good morning' in processed:
-        return "¡Buenos días! ¿Cómo estás?"
-    
-    return "No entiendo lo que quieres decir."
+
+    greetings = ["hello", "hi", "hey", "hola"]
+    farewells = ["bye", "goodbye", "see you", "adios"]
+    well_being = ["how are you", "how are you doing", "what's up", "how's it going"]
+    morning_greetings = ["good morning", "buenos días"]
+    night_greetings = ["good night", "buenas noches"]
+    thanks = ["thank you", "thanks", "gracias"]
+    bot_identity = ["who are you", "what is your name"]
+
+    if any(greet in processed for greet in greetings):
+        return random.choice([
+            "¡Hola! ¿Cómo estás?",
+            "¡Hey! Encantado de verte.",
+            "¡Hola, bienvenido!",
+            "¡Hola! ¿En qué puedo ayudarte?"
+        ])
+
+    if any(farewell in processed for farewell in farewells):
+        return random.choice([
+            "¡Adiós! Nos vemos pronto.",
+            "Hasta luego, cuídate.",
+            "¡Chao! Que tengas un buen día.",
+            "Espero verte pronto, ¡cuídate!"
+        ])
+
+    if any(wb in processed for wb in well_being):
+        return random.choice([
+            "Estoy bien, gracias por preguntar 😊",
+            "¡Genial! ¿Y tú?",
+            "Me siento excelente, ¿cómo estás tú?",
+            "No me puedo quejar, ¿qué hay de ti?"
+        ])
+
+    if any(morning in processed for morning in morning_greetings):
+        return random.choice([
+            "¡Buenos días! Espero que tengas un día increíble.",
+            "¡Hola! Que tengas un gran día ☀️",
+            "¡Buenos días! ¿Cómo amaneciste?",
+            "¡Buenos días! ¿Cómo va todo?"
+        ])
+
+    if any(night in processed for night in night_greetings):
+        return random.choice([
+            "¡Buenas noches! Que descanses.",
+            "Dulces sueños 🌙",
+            "Espero que tengas una noche tranquila.",
+            "¡Nos vemos mañana!"
+        ])
+
+    if any(thank in processed for thank in thanks):
+        return random.choice([
+            "¡De nada! 😊",
+            "No hay de qué.",
+            "Siempre feliz de ayudar.",
+            "¡Con gusto!"
+        ])
+
+    if any(bot in processed for bot in bot_identity):
+        return random.choice([
+            "Soy un bot, aquí para ayudarte. 😊",
+            "Me puedes llamar tu asistente virtual.",
+            "Soy un programa de IA, ¿en qué puedo ayudarte?",
+            "¡Soy un bot, pero con mucha personalidad!"
+        ])
+
+    return random.choice([
+        "No entiendo lo que quieres decir. 🤔",
+        "¿Podrías reformular tu pregunta?",
+        "Lo siento, no te entendí bien.",
+        "No estoy seguro de cómo responder a eso."
+    ])
+
 
 # Message
 async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
