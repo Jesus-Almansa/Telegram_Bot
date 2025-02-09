@@ -5,7 +5,8 @@ services:
       args:
         JESUS_PASSWORD: ${JESUS_PASSWORD}
         IKER_PASSWORD: ${IKER_PASSWORD}
-    container_name: TelgramBot
+    container_name: TelegramBot
+    restart: always
     hostname: yharnam
     env_file:
       - .env
@@ -14,6 +15,3 @@ services:
     stdin_open: true
     tty: true
     user: "jesus"
-#    command: bash -c "sudo chown -R jesus:jesus /usr/src/app/workspace && bash"
-    entrypoint: ["bash", "-c", "sudo chown -R jesus:jesus /usr/src/app/workspace && bash"]
-
